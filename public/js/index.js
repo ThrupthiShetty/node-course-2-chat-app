@@ -13,3 +13,9 @@ socket.on('newMessage', function (message) {
 })
 
 
+socket.emit('createMessage',{
+    from :'julie',
+    text : 'some text'
+}, function (data){
+console.log('Got it ',data)
+})
