@@ -37,6 +37,17 @@ socket.on('connect', function () {
 })
 socket.on('disconnect', function () {
     console.log('disconnected from the server')
+    
+})
+
+socket.on('updateUserList',function(users){
+    console.log('users list',users)
+    var ol = jQuery('<ol></ol>')
+    users.forEach(function (user){
+        ol.append(jQuery('<li></li>').text(user))
+    })
+    jQuery('#users').html(ol)
+
 })
 
 socket.on('newMessage', function (message) {
@@ -52,7 +63,7 @@ socket.on('newMessage', function (message) {
         from : message.from,
         createdAt : formattedTime
     })
-    console.log(template)
+    //console.log(template)
     jQuery('#messages').append(html)
     scrolltoBottom();
 
